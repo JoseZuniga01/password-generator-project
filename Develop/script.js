@@ -1,10 +1,9 @@
 // constatn variables we will reference across the code 
-const keys = {
-  upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  lowerCase: "abcdefghijklmnopqrstuvwxyz",
-  number: "0123456789",
-  symbol: "!@#$%^&*()-_+=[]{}?.><"
-} 
+const specialCharacter = "!@#$%^&*()";
+const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowerCase = "abcdefghijklmnopqrstuvwxyz"; 
+const number = "0123456789";
+const symbol = "!@#$%^&*()-_+=[]{}?.><";
 
 // Write password to the #password input
 function writePassword() {
@@ -44,20 +43,21 @@ function generatePassword() {
  var minimumSpecialCharacters = "";
 
  // Generate password function
- var array = {
-  getUpperC: Function() ,
-    return keys.upperCase [Math.floor(Math.random() * keys.upperCase.length)]
+ var functionArray = {
+  getNumeric: function() {
+    return number[Math.floor(Math.random() * 10 + 48)]
   },
+
   getLowerC: function() {
-    return keys.lowerCase[Math.floor(Math.random() * keys.lowerCase.length)];
+    return lowerCase[Math.floor(Math.random() * 26 + 97)]
   },
 
-  getNumeric: function(number) {
-    return keys.number[Math.floor(Math.random() * keys.number.length)];
+  getUpperC: function() {
+    return upperCase[Math.floor(Math.random() * 26 + 65)]
   },
 
-  getSpecialCharaters: function() {
-    return keys.symbol[Math.floor(Math.random() * keys.symbol.length)];
+  getSpecialCharacters: function() {
+    return specialCharacter[Math.floor(Math.random() * specialCharacters.length)]
   }
 };
 
@@ -73,12 +73,34 @@ if (lowerC === true) {
 }
 if  (upperC === true) {
   minimumUpperC = functionArray.getUpperC ();
+  minimumCount++;
 }
 if (specialCharacters === true) {
-  minimumSpecialCharacters = functionArray.getSpecialCharacters();
+  minimumSpecialCharacters = functionArray.getSpecialCharacter();
+  minimumCount++;
+}
 
+var randomPasswordGenerated = "";
+
+// loop getting random characters
+for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
+  var randomNumberPicked = Math.floor(Math.random() * 4);
+
+  randomPasswordGenerated += randomNumberPicked;
+
+}
+
+// to make sure characters are added to the password
+randomPasswordGenerated += minimumNumeric;
+randomPasswordGenerated += minimumLowerC;
+randomPasswordGenerated += minimumUpperC;
+randomPasswordGenerated += minimumSpecialCharacters;
+
+
+return randomPasswordGenerated;
+
+}
 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
