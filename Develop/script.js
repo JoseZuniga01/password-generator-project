@@ -34,10 +34,15 @@ function generatePassword() {
   var specialCharacters = confirm (
     "Would you like to use special characters in your password?" 
   )
-}
- 
+// minimum count for all inputs 
+ var minimumCount = 0
 
+ var minimumLowerC = "";
+ var minimumUpperC = "";
+ var minimumNumeric = "";
+ var minimumSpecialCharacters = "";
 
+ // Generate password function
 const getKey = [
   function upperCase() {
     return keys.upperCase[Math.floor(Math.random() * keys.upperCase.length)];
@@ -52,10 +57,10 @@ const getKey = [
     return keys.symbol[Math.floor(Math.random() * keys.symbol.length)];
   }
 ];
+}
 
 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-password();
