@@ -1,9 +1,9 @@
 // constatn variables we will reference across the code 
-const specialCharacter = "!@#$%^&*()";
-const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lowerCase = "abcdefghijklmnopqrstuvwxyz"; 
-const number = "0123456789";
-const symbol = "!@#$%^&*()-_+=[]{}?.><";
+var specialCharacter = "!@#$%^&*()";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCase = "abcdefghijklmnopqrstuvwxyz"; 
+var number = "0123456789";
+var symbol = "!@#$%^&*()-_+=[]{}?.><";
 
 // Write password to the #password input
 function writePassword() {
@@ -17,8 +17,9 @@ function writePassword() {
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate"); 
 function generatePassword() {
+
   // ask user for password inputs
-  var passwordLegnth = window.prompt(
+  var passwordLength = window.prompt(
    "How long would you like your password to be? Enter a number between 8 and 128"
   );
   var lowerC = confirm (
@@ -45,24 +46,22 @@ function generatePassword() {
  // Generate password function
  var functionArray = {
   getNumeric: function() {
-    return number[Math.floor(Math.random() * 10 + 48)]
+    return number[Math.floor(Math.random( ))]
   },
 
   getLowerC: function() {
-    return lowerCase[Math.floor(Math.random() * 26 + 97)]
+    return lowerCase[Math.floor(Math.random())]
   },
 
   getUpperC: function() {
-    return upperCase[Math.floor(Math.random() * 26 + 65)]
+    return upperCase[Math.floor(Math.random())]
   },
 
   getSpecialCharacters: function() {
-    return specialCharacter[Math.floor(Math.random() * specialCharacters.length)]
+    return specialCharacter[Math.floor(Math.random())]
   }
-};
-
+} 
 //check to make sure user selected something to run function 
-
 if (numeric === true) {
   minimumNumeric =functionArray.getNumeric ();
   minimumCount++;
@@ -76,7 +75,7 @@ if  (upperC === true) {
   minimumCount++;
 }
 if (specialCharacters === true) {
-  minimumSpecialCharacters = functionArray.getSpecialCharacter();
+  minimumSpecialCharacters = functionArray.getSpecialCharacters();
   minimumCount++;
 }
 
