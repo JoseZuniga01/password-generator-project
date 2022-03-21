@@ -1,5 +1,10 @@
-// Assignment code here
-
+// constatn variables we will reference across the code 
+const keys = {
+  upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lowerCase: "abcdefghijklmnopqrstuvwxyz",
+  number: "0123456789",
+  symbol: "!@#$%^&*()-_+=[]{}?.><"
+} 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
