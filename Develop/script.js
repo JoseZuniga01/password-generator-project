@@ -6,29 +6,6 @@ const keys = {
   symbol: "!@#$%^&*()-_+=[]{}?.><"
 } 
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate"); {
-var password = function() {
-  // ask user for password legnth 
-  var passwordLegnth = window.prompt(
-   "How long would you like your password to be? Enter a number between 8 and 128"
-  );
-  var lowerC = window.prompt (
-    "Would you like to use lowercase characters in your password? Type YES or NO"
-  );
-  var upperC = window.prompt (
-    "Would you like to use uppercase characters in your password? Type YES or NO"
-  )
-  var numeric = window.prompt (
-    "Would you like to use number in your password? Type YES or NO"
-  )
-  var specialCharacters = window.prompt (
-    "Would you like to use special characters in your password? Type YES or NO"
-  )
-}
- 
-  };
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -37,6 +14,29 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate"); 
+function generatePassword() {
+  // ask user for password inputs
+  var passwordLegnth = window.prompt(
+   "How long would you like your password to be? Enter a number between 8 and 128"
+  );
+  var lowerC = confirm (
+    "Would you like to use lowercase characters in your password?"
+  );
+  var upperC = confirm (
+    "Would you like to use uppercase characters in your password?"
+  )
+  var numeric = confirm (
+    "Would you like to use numbers in your password? "
+  )
+  var specialCharacters = confirm (
+    "Would you like to use special characters in your password?" 
+  )
+}
+ 
+
 
 const getKey = [
   function upperCase() {
@@ -57,4 +57,5 @@ const getKey = [
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-password ();
+
+password();
