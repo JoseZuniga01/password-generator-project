@@ -34,7 +34,8 @@ function generatePassword() {
   var specialCharacters = confirm (
     "Would you like to use special characters in your password?" 
   )
-// minimum count for all inputs 
+
+  // minimum count for all inputs 
  var minimumCount = 0
 
  var minimumLowerC = "";
@@ -43,21 +44,38 @@ function generatePassword() {
  var minimumSpecialCharacters = "";
 
  // Generate password function
-const getKey = [
-  function upperCase() {
-    return keys.upperCase[Math.floor(Math.random() * keys.upperCase.length)];
+ var array = {
+  getUpperC: Function() ,
+    return keys.upperCase [Math.floor(Math.random() * keys.upperCase.length)]
   },
-  function lowerCase() {
+  getLowerC: function() {
     return keys.lowerCase[Math.floor(Math.random() * keys.lowerCase.length)];
   },
-  function number() {
+
+  getNumeric: function(number) {
     return keys.number[Math.floor(Math.random() * keys.number.length)];
   },
-  function symbol() {
+
+  getSpecialCharaters: function() {
     return keys.symbol[Math.floor(Math.random() * keys.symbol.length)];
   }
-];
+};
+
+//check to make sure user selected something to run function 
+
+if (numeric === true) {
+  minimumNumeric =functionArray.getNumeric ();
+  minimumCount++;
 }
+if (lowerC === true) {
+  minimumLowerC = functionArray.getLowerC();
+  minimumCount++;
+}
+if  (upperC === true) {
+  minimumUpperC = functionArray.getUpperC ();
+}
+if (specialCharacters === true) {
+  minimumSpecialCharacters = functionArray.getSpecialCharacters();
 
 
 
