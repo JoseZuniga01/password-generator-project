@@ -1,105 +1,74 @@
-// constatn variables we will reference across the code 
-var specialCharacter = "!@#$%^&*()";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerCase = "abcdefghijklmnopqrstuvwxyz"; 
-var number = "0123456789";
-var symbol = "!@#$%^&*()-_+=[]{}?.><";
+var standardReqs = [];
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" .split("");
+var lowerCase = "abcdefghiklmnopqrsttuvwxtz" .split("");
+var numberCharacters = "0123456789" .split ("");
+var specialCharacters = "*&^%$#@!?><{}" .split("");
 
-// Write password to the #password input
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Write password \
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
+    passwordText.value = password;
 }
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate"); 
-function generatePassword() {
+function generatePassword () {
+    var passLength = prompt("How many characters would you like your password to be. Choose between 8 - 128 characters.");
+    
+    var lengthConfirm = parseInt(passLength);
+    console.log(lengthConfirm);
+ 
+// if else statement to choose a length of at least 8 to 128 characters
+    if (passLength < 8 || passLength > 128 || isNaN(passLength)) {
+        alert ("Choice is not valid. Please try again.");
+        return;
+    }
 
-  // ask user for password inputs
-  var passwordLength = window.prompt(
-   "How long would you like your password to be? Enter a number between 8 and 128"
-  );
-  var lowerC = confirm (
-    "Would you like to use lowercase characters in your password?"
-  );
-  var upperC = confirm (
-    "Would you like to use uppercase characters in your password?"
-  )
-  var numeric = confirm (
-    "Would you like to use numbers in your password? "
-  )
-  var specialCharacters = confirm (
-    "Would you like to use special characters in your password?" 
-  )
+// ask user to use uppercase
+var upperCaseConfirm = confirm("Do you want your password to include uppercase letters?");
+    if (upperCaseConfirm === true) {
+        for (var i = 0; i < upperCase.length; i++) {
+          standardReqs.push(upperCase[i]);
+        }
+    }
+// ask user to use lowercase
+var lowerCaseConfirm = confirm("Do you want lowercase letters?");
+    if(lowerCaseConfirm === true) {
+        for (var i = 0; i < lowerCase.length; i++) {
+          standardReqs.push(lowerCase[i]);
+        }
+    }
 
-  // minimum count for all inputs 
- var minimumCount = 0
-
- var minimumLowerC = "";
- var minimumUpperC = "";
- var minimumNumeric = "";
- var minimumSpecialCharacters = "";
-
- // Generate password function
- var functionArray = {
-  getNumeric: function() {
-    return number[Math.floor(Math.random( ))]
-  },
-
-  getLowerC: function() {
-    return lowerCase[Math.floor(Math.random())]
-  },
-
-  getUpperC: function() {
-    return upperCase[Math.floor(Math.random())]
-  },
-
-  getSpecialCharacters: function() {
-    return specialCharacter[Math.floor(Math.random())]
-  }
-} 
-//check to make sure user selected something to run function 
-if (numeric === true) {
-  minimumNumeric =functionArray.getNumeric ();
-  minimumCount++;
-}
-if (lowerC === true) {
-  minimumLowerC = functionArray.getLowerC();
-  minimumCount++;
-}
-if  (upperC === true) {
-  minimumUpperC = functionArray.getUpperC ();
-  minimumCount++;
-}
-if (specialCharacters === true) {
-  minimumSpecialCharacters = functionArray.getSpecialCharacters();
-  minimumCount++;
+    // ask user to use special characters    
+var specialConfirm = confirm("Do you want special characters?");
+if (specialConfirm === true) {
+    for (var i = 0; i < specialCharacters.length; i++) {
+      standardReqs.push(specialCharacters[i]);
+    }
 }
 
-var randomPasswordGenerated = "";
+// ask user to use numeric
+var numberConfirm = confirm("Do you want include numbers?");
+    if (numberConfirm === true) {
+        for (var i = 0; i < numberCharacters.length; i++) {
+          standardReqs.push(numberCharacters[i]);
+        }
+    }
 
-// loop getting random characters
-for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-  var randomNumberPicked = Math.floor(Math.random() * 4);
-
-  randomPasswordGenerated += randomNumberPicked;
-
+// use stadard from above to create password
+ var randomPassword = "";
+ for (var i = 0; i < lengthConfirm; i++) {
+  standardReqs[
+         Math.floor(Math.random() * standardReqs.length)];
+     randomPassword +=
+     standardReqs[
+            Math.floor(Math.random() * standardReqs.length)
+        ];
+    }
+ return randomPassword;
 }
 
-// to make sure characters are added to the password
-randomPasswordGenerated += minimumNumeric;
-randomPasswordGenerated += minimumLowerC;
-randomPasswordGenerated += minimumUpperC;
-randomPasswordGenerated += minimumSpecialCharacters;
-
-
-return randomPasswordGenerated;
-
-}
-
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
