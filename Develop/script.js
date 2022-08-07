@@ -27,6 +27,7 @@ function generatePassword () {
         return;
     }
 
+    
 // ask user to use uppercase
 var upperCaseConfirm = confirm("Do you want your password to include uppercase letters?");
     if (upperCaseConfirm === true) {
@@ -34,6 +35,16 @@ var upperCaseConfirm = confirm("Do you want your password to include uppercase l
           standardReqs.push(upperCase[i]);
         }
     }
+
+    // ask user to use numeric
+var numberConfirm = confirm("Do you want include numbers?");
+if (numberConfirm === true) {
+    for (var i = 0; i < numberCharacters.length; i++) {
+      standardReqs.push(numberCharacters[i]);
+    }
+}
+
+
 // ask user to use lowercase
 var lowerCaseConfirm = confirm("Do you want lowercase letters?");
     if(lowerCaseConfirm === true) {
@@ -50,15 +61,7 @@ if (specialConfirm === true) {
     }
 }
 
-// ask user to use numeric
-var numberConfirm = confirm("Do you want include numbers?");
-    if (numberConfirm === true) {
-        for (var i = 0; i < numberCharacters.length; i++) {
-          standardReqs.push(numberCharacters[i]);
-        }
-    }
-
-// use stadard from above to create password
+// use inputs from above to create password
  var randomPassword = "";
  for (var i = 0; i < lengthConfirm; i++) {
   standardReqs[
